@@ -911,7 +911,7 @@ def setup_qemu_emulator(rootdir, arch):
     elif arch == "mipsel":
         node = "/proc/sys/fs/binfmt_misc/mipsel"
         arm_binary = "qemu-mipsel"
-        if not os.path.exists("/usr/bin/%s" % arm_binary) or not is_statically_linked("/usr/bin/%s"):
+        if not os.path.exists("/usr/bin/%s" % arm_binary) or not is_statically_linked("/usr/bin/%s" % arm_binary):
             arm_binary = "qemu-mipsel-static"
         if not os.path.exists("/usr/bin/%s" % arm_binary):
             raise CreatorError("Please install a statically-linked %s" % arm_binary)
