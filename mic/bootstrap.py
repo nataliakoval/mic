@@ -104,10 +104,12 @@ class MiniBackend(object):
 
     def downloadPkgs(self):
         nonexist = []
+        localpth = None
         for pkg in self.dlpkgs:
             localpth = misc.get_package(pkg, self.repomd, self.arch)
             if localpth:
                 self.localpkgs[pkg] = localpth
+                break
             elif pkg in self.optionals:
                 # skip optional rpm
                 continue
@@ -115,7 +117,7 @@ class MiniBackend(object):
                 # mark nonexist rpm
                 nonexist.append(pkg)
 
-        if nonexist:
+        if (localpth is None):
             raise errors.BootstrapError("Can't get rpm binary: %s" %
                                         ','.join(nonexist))
 

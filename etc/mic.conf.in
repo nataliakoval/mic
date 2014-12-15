@@ -31,5 +31,5 @@ pkgmgr = auto
 
 [bootstrap]
 rootdir=/var/tmp/mic-bootstrap
-packages=mic-bootstrap-x86-arm
+packages=mic-bootstrap-x86-arm,mic-bootstrap-x86-mips
 
